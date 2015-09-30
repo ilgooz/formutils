@@ -55,6 +55,9 @@ func init() {
 	validate = validator.New(config)
 }
 
+// Parse parses and validates your *http.Request.Form
+// and returns invalids fields within a map.
+// error returned when the parsing or validation process fails
 func Parse(r *http.Request, out interface{}) (invalids map[string]string, err error) {
 	invalids, err = parseForm(out, r)
 
@@ -73,6 +76,9 @@ func Parse(r *http.Request, out interface{}) (invalids map[string]string, err er
 	return invalids, nil
 }
 
+// ParseSend does the same thing with Parse but responses the http request
+// with a formatted json error mesages for invalids fields and returns a bool
+// according to any invalid fields found or not
 func ParseSend(w http.ResponseWriter, r *http.Request, out interface{}) (invalid bool) {
 	invalids, err := Parse(r, out)
 

@@ -14,7 +14,7 @@ import (
 
 var (
 	// gorilla/schema
-	// Any type that you decode your form fields
+	// Any type that you decode your form fields into
 	ParsingErrorMessages = map[reflect.Type][]string{
 		reflect.TypeOf(time.Time{}): []string{"must be a UTC date", "must be list of UTC dates"},
 		reflect.TypeOf(int(0)):      []string{"must be a number", "must be list of numbers"},

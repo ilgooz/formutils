@@ -24,8 +24,9 @@ var (
 	}
 )
 
-func ParseForm(r *http.Request, out interface{}) (invalids map[string]string, err error) {
+func Parse(r *http.Request, out interface{}) (invalids map[string]string, err error) {
 	invalids, err = parseForm(out, r)
+
 	if err != nil {
 		return invalids, err
 	}
@@ -82,8 +83,8 @@ func validateForm(out interface{}) (invalids map[string]string) {
 	invalids = make(map[string]string)
 
 	config := &validator.Config{
-		TagName:           "validate",
-		CustomNameTagName: "schema",
+		TagName:      "validate",
+		FieldNameTag: "schema",
 	}
 	validate := validator.New(config)
 

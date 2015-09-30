@@ -13,13 +13,26 @@ import (
 )
 
 var (
+	// gorilla/schema
+	// Any type that you decode your form fields
 	ParsingErrorMessages = map[reflect.Type][]string{
-		reflect.TypeOf(time.Time{}): []string{"must be a UTC date", "must be group of UTC dates"},
-		reflect.TypeOf(0):           []string{"must be a number", "must be group of numbers"},
-		reflect.TypeOf(0.0):         []string{"must be a number", "must be group of numbers"},
-		reflect.TypeOf(false):       []string{"must be boolean", ""},
+		reflect.TypeOf(time.Time{}): []string{"must be a UTC date", "must be list of UTC dates"},
+		reflect.TypeOf(int(0)):      []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(int8(0)):     []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(int16(0)):    []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(int32(0)):    []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(int64(0)):    []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(uint8(0)):    []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(uint16(0)):   []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(uint32(0)):   []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(uint64(0)):   []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(float32(0)):  []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(float64(0)):  []string{"must be a number", "must be list of numbers"},
+		reflect.TypeOf(false):       []string{"must be boolean", "must be list of booleans"},
 	}
 
+	// go-playground/validator
+	// Refer: https://godoc.org/gopkg.in/go-playground/validator.v8#hdr-Baked_In_Validators_and_Tags
 	ValidationErrorMessages = map[string][]string{
 		"email": []string{"must be a valid email address", "must be group of valid email addresses"},
 		"min":   []string{"must be min %s chars length", "items must be min %s chars length"},

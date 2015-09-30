@@ -1,12 +1,12 @@
 ### formutils [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/ilgooz/formutils)
-> Parse & validate your *http.Request.Form with gorilla/schema and go-playground/validator and response your invalid fields a pretty formated json error message if you want
+> Parse & validate your *http.Request.Form by using gorilla/schema & go-playground/validator then response your invalid fields with a pretty formated JSON error message if you like
 
 ## Example
 ```go
 func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
   fields := createUserForm{}
 
-	// parse & validate your form and response with a pretty json error message
+	// parse & validate your form and response errors with a pretty json error message
 	// if not all fields are valid
 	// e.g.
 	//

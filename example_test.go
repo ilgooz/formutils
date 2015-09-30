@@ -16,7 +16,7 @@ func Example() {
 func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	fields := createUserForm{}
 
-	// parse & validate your form and response with a pretty json error message
+	// parse & validate your form and response errors with a pretty json error message
 	// if not all fields are valid
 	// e.g.
 	//

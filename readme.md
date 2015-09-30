@@ -38,3 +38,5 @@ type createUserForm struct {
 	Password string `schema:"password" validate:"min=3,required"`
 }
 ```
+
+[Stack](http://github.com/ilgooz/stack) *a simple idiomatic RESTful API* also uses formutils.

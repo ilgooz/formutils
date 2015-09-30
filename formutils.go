@@ -81,12 +81,20 @@ func parseForm(out interface{}, r *http.Request) (invalids map[string]string, er
 			return invalids, err
 		}
 
-		messages, ok := ParsingMessages[convErr.Type]
-		if convErr.Index == -1 {
-			invalids[convErr.Key] = messages[0]
+		messages, exists := ParsingMessages[convErr.Type]
+		var message string
+
+		if exists {
+			if convErr.Index == -1 {
+				message = messages[0]
+			} else {
+				message = messages[1]
+			}
 		} else {
-			invalids[convErr.Key] = messages[1]
+			message = "unknown error"
 		}
+
+		invalids[convErr.Key] = message
 	}
 
 	return invalids, nil

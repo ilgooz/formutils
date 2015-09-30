@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/ilgooz/formutils"
+	"github.com/ilgooz/httpres"
 )
 
 func Example() {
@@ -40,6 +41,7 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 
 	// everything is OK, fields should be filled with their values
 	fmt.Println(fields)
+	httpres.Json(w, http.StatusCreated, fields)
 }
 
 type createUserForm struct {

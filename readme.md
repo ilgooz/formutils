@@ -1,5 +1,5 @@
 ### formutils [![GoDoc](https://godoc.org/github.com/golang/gddo?status.svg)](http://godoc.org/github.com/ilgooz/formutils)
-> Parse & validate your *http.Request.Form by using gorilla/schema & go-playground/validator then response your invalid fields with a pretty formated JSON error message if you like
+> Parse & validate your *http.Request.Form by using gorilla/schema & go-playground/validator then response your invalid fields with a pretty formated JSON error message optionally
 
 ## Example
 ```go

@@ -57,7 +57,7 @@ func init() {
 
 // Parse parses and validates your *http.Request.Form
 // and returns invalids fields within a map.
-// error returned when the parsing or validation process fails
+// error returned if the parsing process fails
 func Parse(r *http.Request, out interface{}) (invalids map[string]string, err error) {
 	invalids, err = parseForm(out, r)
 

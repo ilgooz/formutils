@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/ilgooz/schema"
-	"gopkg.in/ilgooz/validator.v8"
+	"gopkg.in/go-playground/validator.v8"
 )
 
 var (
@@ -23,6 +23,22 @@ var (
 		"min":   []string{"must be min %s chars length", "items must be min %s chars length"},
 	}
 )
+
+var (
+	decoder  *schema.Decoder
+	validate *validator.Validate
+)
+
+func init() {
+	decoder = schema.NewDecoder()
+	decoder.IgnoreUnknownKeys(true)
+
+	config := &validator.Config{
+		TagName:      "validate",
+		FieldNameTag: "schema",
+	}
+	validate = validator.New(config)
+}
 
 func Parse(r *http.Request, out interface{}) (invalids map[string]string, err error) {
 	invalids, err = parseForm(out, r)
@@ -48,9 +64,6 @@ func parseForm(out interface{}, r *http.Request) (invalids map[string]string, er
 	if err := r.ParseForm(); err != nil {
 		return invalids, err
 	}
-
-	decoder := schema.NewDecoder()
-	decoder.IgnoreUnknownKeys(true)
 
 	err = decoder.Decode(out, r.Form)
 	if err == nil {
@@ -81,12 +94,6 @@ func parseForm(out interface{}, r *http.Request) (invalids map[string]string, er
 
 func validateForm(out interface{}) (invalids map[string]string) {
 	invalids = make(map[string]string)
-
-	config := &validator.Config{
-		TagName:      "validate",
-		FieldNameTag: "schema",
-	}
-	validate := validator.New(config)
 
 	err := validate.Struct(out)
 	if err == nil {

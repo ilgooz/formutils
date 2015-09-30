@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/ilgooz/schema"
-	"github.com/ilgooz/validator"
+	"gopkg.in/ilgooz/validator.v8"
 )
 
 var (

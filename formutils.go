@@ -156,7 +156,11 @@ func validateForm(out interface{}) (invalids map[string]string) {
 				message = fmt.Sprintf(message, e.Param)
 			}
 		} else {
-			message = fmt.Sprintf("%s: %s", e.Tag, e.Param)
+			if e.Param == "" {
+				message = e.Tag
+			} else {
+				message = fmt.Sprintf("%s: %s", e.Tag, e.Param)
+			}
 		}
 
 		invalids[e.Name] = message

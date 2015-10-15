@@ -7,8 +7,8 @@ import (
 	"reflect"
 	"time"
 
+	"github.com/gorilla/schema"
 	"github.com/ilgooz/eres"
-	"github.com/ilgooz/schema"
 	"gopkg.in/go-playground/validator.v8"
 )
 
